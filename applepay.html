@@ -23,6 +23,11 @@ let button = new paydock.WalletButtons(
 
 
  button.setEnv('sandbox');
+ button.onUpdate((data) => {
+        console.log("Updating amount via a backend to backend call to POST charges/:id");
+        // call `POST charges/:id` to modify charge
+        button.update({ success: true });
+    });
  button.load();
 </script>
 </html>
