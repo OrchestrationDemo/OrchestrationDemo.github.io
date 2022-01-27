@@ -17,10 +17,12 @@ let button = new paydock.WalletButtons(
     {
         amount_label: "Total",
         country: "AU",
+        wallets: ["apple", "google"]
     }
 );
 
 
+ button.setEnv('sandbox')''
  button.load();
 </script>
 </html>
