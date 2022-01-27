@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h2>Payment using PayDock Wallet Button!</h2>
+    <div id="widget"></div>
+</body>
+<script src="https://app-sandbox.paydock.com/v1/widget.umd.js" ></script>
+<script>
+
+let button = new paydock.WalletButtons(
+    "#widget",
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjFmN2U4MzlmNTFiMjRiOGE4Y2Q3MyIsIm1ldGEiOiJleUp0WlhSaElqcDdJbU5vWVhKblpTSTZleUpwWkNJNklqWXhaakZtTjJVM04yVmtaRGcwTWpSaU1XRTJaV0ZpTXlJc0ltRnRiM1Z1ZENJNk1UQXNJbU4xY25KbGJtTjVJam9pUVZWRUlpd2lZMkZ3ZEhWeVpTSTZkSEoxWlgwc0ltZGhkR1YzWVhraU9uc2lkSGx3WlNJNklsTjBjbWx3WlNJc0ltMXZaR1VpT2lKMFpYTjBJbjBzSW1OeVpXUmxiblJwWVd4eklqcDdJbU5zYVdWdWRGOWhkWFJvSWpvaWNHdGZkR1Z6ZEY4MU1VdE1hRFE1U2xGT05HMWhTbEp5U1VOUWRHSlJWR1YyTnpCalZUaFBVWFI2VDNOdldURm9hekpFYW1KT09EYzVaMjlVU1dOR1prOVplRTAwYVRaclpFcE1ZVEEyTmxSUVdtNDVXbWxzUTFjMmMyZFlibkpqUVRBd1oxZGFhSGxJTUhvaWZYMTkiLCJpYXQiOjE2NDMyNDc1OTIsImV4cCI6MTY0MzMzMzk5Mn0.atG5Nci9rXAD4MF-t95-x9V62JLIs_vgWTS03i3PytU',
+    {
+        amount_label: "Total",
+        country: "AU",
+    }
+);
+
+
+ button.load();
+</script>
+</html>
