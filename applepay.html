@@ -23,11 +23,16 @@ let button = new paydock.WalletButtons(
 
 
  button.setEnv('sandbox');
- button.onUpdate((data) => {
+    button.onUnavailable(() => console.log("No wallet buttons available"));
+    button.onUpdate((data) => {
         console.log("Updating amount via a backend to backend call to POST charges/:id");
         // call `POST charges/:id` to modify charge
         button.update({ success: true });
     });
+    button.onPaymentSuccessful((data) => console.log("The payment was successful"));
+    button.onPaymentError((data) => console.log("The payment was not successful"));
+    button.onPaymentInReview((data) => console.log("The payment is on fraud review"));
+    button.load();
  button.load();
 </script>
 </html>
