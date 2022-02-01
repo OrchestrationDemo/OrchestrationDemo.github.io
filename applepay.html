@@ -20,7 +20,7 @@
         );
         button.load();
         button.on(EVENT.UNAVAILABLE, () => alert("No wallet buttons available"));
-        button.on(EVENT.UPDATE, (data) => alert("Updating amount via a backend to backend call to POST charges/:id");
+        button.on(EVENT.UPDATE, (data) => alert("Updating amount via a backend to backend call to POST charges/:id"));
         button.on(EVENT.PAYMENT_SUCCESSFUL, (data) => alert("The payment was successful"));
         button.on(EVENT.PAYMENT_ERROR, (data) => alert("The payment was not successful"));
 </script>
