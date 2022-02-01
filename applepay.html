@@ -5,34 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-    <h2>Wallet Payments Demo </h2>
+    <h2>Payment using PayDock Wallet Button!</h2>
     <div id="widget"></div>
 </body>
 <script src="https://app-sandbox.paydock.com/v1/widget.umd.js" ></script>
 <script>
-
-let button = new paydock.WalletButtons(
-    "#widget",
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjMzMGEyMzlmNTFiMjRiOGE5YTQwZiIsIm1ldGEiOiJleUp0WlhSaElqcDdJbU5vWVhKblpTSTZleUpwWkNJNklqWXhaak16TUdFeU4yVmtaRGcwTWpSaU1XRTNNbU14TVNJc0ltRnRiM1Z1ZENJNk1Td2lZM1Z5Y21WdVkza2lPaUpCVlVRaUxDSmpZWEIwZFhKbElqcDBjblZsZlN3aVoyRjBaWGRoZVNJNmV5SjBlWEJsSWpvaVUzUnlhWEJsSWl3aWJXOWtaU0k2SW5SbGMzUWlmU3dpWTNKbFpHVnVkR2xoYkhNaU9uc2lZMnhwWlc1MFgyRjFkR2dpT2lKd2ExOTBaWE4wWHpVeFMweG9ORGxLVVU0MGJXRktVbkpKUTFCMFlsRlVaWFkzTUdOVk9FOVJkSHBQYzI5Wk1XaHJNa1JxWWs0NE56bG5iMVJKWTBabVQxbDRUVFJwTm10a1NreGhNRFkyVkZCYWJqbGFhV3hEVnpaeloxaHVjbU5CTURCblYxcG9lVWd3ZWlKOWZYMD0iLCJpYXQiOjE2NDMzMjc2NTAsImV4cCI6MTY0MzQxNDA1MH0.0BL95oCsjd1bnEPE_93gLvHdoeyO1MS8ejGqRiXkjgk',
-    {
-        amount_label: "Total",
-        country: "AU",
-        wallets: ["apple", "google"]
-    }
-);
-
-
- button.setEnv('sandbox');
-    button.onUnavailable(() => console.log("No wallet buttons available"));
-    button.onUpdate((data) => {
-        console.log("Updating amount via a backend to backend call to POST charges/:id");
-        // call `POST charges/:id` to modify charge
-        button.update({ success: true });
-    });
-    button.onPaymentSuccessful((data) => console.log("The payment was successful"));
-    button.onPaymentError((data) => console.log("The payment was not successful"));
-    button.onPaymentInReview((data) => console.log("The payment is on fraud review"));
-    button.load();
- button.load();
+        let button = new paydock.WalletButtons(
+            "#widget",
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjliOTgzMzlmNTFiMjRiOGFkZmQzYyIsIm1ldGEiOiJleUp0WlhSaElqcDdJbU5vWVhKblpTSTZleUpwWkNJNklqWXhaamxpT1Rnek4yVmtaRGcwTWpSaU1XRTROR00wTnlJc0ltRnRiM1Z1ZENJNk1Td2lZM1Z5Y21WdVkza2lPaUpCVlVRaUxDSmpZWEIwZFhKbElqcDBjblZsZlN3aVoyRjBaWGRoZVNJNmV5SjBlWEJsSWpvaVUzUnlhWEJsSWl3aWJXOWtaU0k2SW5SbGMzUWlmU3dpWTNKbFpHVnVkR2xoYkhNaU9uc2lZMnhwWlc1MFgyRjFkR2dpT2lKd2ExOTBaWE4wWHpVeFMweG9ORGxLVVU0MGJXRktVbkpKUTFCMFlsRlVaWFkzTUdOVk9FOVJkSHBQYzI5Wk1XaHJNa1JxWWs0NE56bG5iMVJKWTBabVQxbDRUVFJwTm10a1NreGhNRFkyVkZCYWJqbGFhV3hEVnpaeloxaHVjbU5CTURCblYxcG9lVWd3ZWlKOWZYMD0iLCJpYXQiOjE2NDM3NTU5MDcsImV4cCI6MTY0Mzg0MjMwN30.QKaJv0-kZQZ69du763FKNScdUPIup4OyRnbM8cAQscg',
+            {
+                amount_label: "Total",
+                country: "AU",
+            }
+        );
+        button.load();
 </script>
 </html>
