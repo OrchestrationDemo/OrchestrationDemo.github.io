@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orchestration Demo</title>
+    <style>iframe {border: 0;width: 100%;height: 350px;}</style>
+</head>
+<body>
+    <form id="paymentForm">
+        <center><img src="/logo.png" width="450" height="119.94"></center>
+        <div id="widget"
+        title="Orchestration Demo"
+        finish-text="Success! Check Payment Token Below / Console Log!"></div>
+    </form>
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://widget.paydock.com/sdk/latest/widget.umd.js" ></script>
+
+        <script type="text/javascript">document.addEventListener('contextmenu', event => event.preventDefault());</script>
+    
+    <script>
+        var widget = new paydock.HtmlWidget('#widget', '97c2d87402dd063610f641b46b4c764ae0b4df79');
+        widget.onFinishInsert('input[name="payment_source_token"]', 'payment_source');
+        widget.setFormElements([
+      {
+          field:  'card_name*',
+          label: 'Card Holder Name',
+          value: 'Test User',
+      },
+      {
+          field:  'card_number*',
+          label: 'Card Number',
+          value: '4242424242424242',
+      }
+  ])
+        widget.load();
+        widget.on('finish', function (data) { 
+           console.log('Payment Data', data);
+        });
+    </script>
+
+    <script>
+
+     function sendPayload(){
+var data = JSON.stringify({
+  "amount": document.getElementById("amount").value,
+  "currency": "AUD",
+  "token": document.getElementById("payment_source_token").value
+});
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    console.log(this.responseText);
+    $('#jsondata').val(this.responseText);
+  }
+});
+
+xhr.addEventListener("readystatechange", function() {
+  if(this.readyState === 4) {
+    if(this.status == 201)
+    $('#payment_status').val('Payment Approved!');
+    else
+    $('#payment_status').val('Request Failed!');
+  }
+});
+
+
+xhr.open("POST", "https://api-sandbox.paydock.com/v1/charges");
+xhr.setRequestHeader("x-user-secret-key", "3eb1654b7610dbebc25aa29ae15499e42d97dfe2");
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.send(data);
+}
+
+    </script>
+
+    <center><b>Card Number: </b>4242424242424242</center>
+    <center><b>Exp Date: </b>12/23</center>
+    <center><b>CVV: </b>123</center>
+    <p><center><b>Step 1) Your Payment Token is: </b><input name="payment_source_token" id="payment_source_token" readonly></center></p>
+    <p><center><b>Step 2) Enter Payment Amount: </b><input name="amount" id="amount" maxlength="3"></center></p>
+    <p><center><b>Step 3) </b><button onclick="sendPayload()">Send Your Payment</button></center></p>
+    <p><center><b>Step 4) Check Your Payment Status: </b><b><input name="payment_status" id="payment_status" readonly></center></b></p>
+    <p><center><b>Step 5) Your JSON Response Data is: </b></center></p>
+    <p><center><textarea name="jsondata" id="jsondata" style="height: 413px; width: 1289px;" readonly></textarea></center></p>
+
+
+</body>
+</html>
